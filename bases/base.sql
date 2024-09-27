@@ -10,8 +10,8 @@ CREATE TABLE type_rubrique (
    PRIMARY KEY(id_type_rubrique)
 );
 
-CREATE TABLE type_centre (+
-   id_type_centre VARCHAR(50),
+CREATE TABLE type_centre (
+   id_type_centre SERIAL,
    nom VARCHAR(30) NOT NULL,
    PRIMARY KEY(id_type_centre)
 );
@@ -32,7 +32,7 @@ CREATE TABLE rubrique (
 CREATE TABLE centre (
    id_centre SERIAL,
    nom VARCHAR(30) NOT NULL,
-   id_type_centre VARCHAR(50) NOT NULL,
+   id_type_centre INT NOT NULL,
    PRIMARY KEY(id_centre),
    FOREIGN KEY(id_type_centre) REFERENCES type_centre(id_type_centre)
 );
