@@ -1,0 +1,13 @@
+<li class="nav-item">
+<a class="nav-link" data-toggle="collapse" href="#ui-caisse" aria-expanded="false" aria-controls="ui-caisse">
+    <i class="icon-layout menu-icon"></i>
+    <span class="menu-title">Caisse</span>
+    <i class="menu-arrow"></i>
+</a>
+<div class="collapse" id="ui-depenses">
+    <ul class="nav flex-column sub-menu">
+        <li class="nav-item"> <a class="nav-link" href="#" id="link-listesMouv">Listes mouvement</a></li>
+        <li class="nav-item"> <a class="nav-link" href="#" id="link-depenses">Total</a></li>
+    </ul>
+</div>
+</li>
