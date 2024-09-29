@@ -16,6 +16,7 @@ CREATE TABLE type_centre (
    PRIMARY KEY(id_type_centre)
 );
 
+
 CREATE TABLE rubrique (
    id_rubrique SERIAL,
    nom VARCHAR(30) NOT NULL,
@@ -29,19 +30,22 @@ CREATE TABLE rubrique (
    FOREIGN KEY(id_type_rubrique) REFERENCES type_rubrique(id_type_rubrique)
 );
 
-CREATE TABLE centre (
-   id_centre SERIAL,
-   nom VARCHAR(30) NOT NULL,
-   id_type_centre INT NOT NULL,
-   PRIMARY KEY(id_centre),
-   FOREIGN KEY(id_type_centre) REFERENCES type_centre(id_type_centre)
-);
-
 CREATE TABLE exercice (
    id_exercice SERIAL,
    date_debut DATE NOT NULL,
    date_fin DATE NOT NULL,
+   nb_centres INT NOT NULL,
    PRIMARY KEY(id_exercice)
+);
+
+CREATE TABLE centre (
+   id_centre SERIAL,
+   nom VARCHAR(30) NOT NULL,
+   id_type_centre INT NOT NULL,
+   id_exercice INT NOT NULL,
+   PRIMARY KEY(id_centre),
+   FOREIGN KEY(id_type_centre) REFERENCES type_centre(id_type_centre),
+   FOREIGN KEY(id_exercice) REFERENCES exercice(id_exercice)
 );
 
 CREATE TABLE liaison (
@@ -57,3 +61,19 @@ CREATE TABLE liaison (
    FOREIGN KEY(id_centre) REFERENCES centre(id_centre),
    FOREIGN KEY(id_rubrique) REFERENCES rubrique(id_rubrique)
 );
+
+
+insert into type_centre(nom) values
+('Centre operationnel'),
+('Centre de structure');
+
+
+insert into type_rubrique(nom) values
+('Charge incorporable'),
+('Charge non incorporable'),
+('Charge suppletive');
+
+
+insert into nature_rubrique(nom) values
+('Charge directe'),
+('Charge indirecte');
